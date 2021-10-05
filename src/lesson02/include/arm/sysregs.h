@@ -37,6 +37,8 @@
 
 #define SPSR_MASK_ALL 			(7 << 6)
 #define SPSR_EL1h			(5 << 0)
-#define SPSR_VALUE			(SPSR_MASK_ALL | SPSR_EL1h)
+#define SPSR_EL2h			(9 << 0)                    //Found on page 393 of AArch64 manual
+#define SPSR_VALUE_EL1      (SPSR_MASK_ALL | SPSR_EL1h)
+#define SPSR_VALUE_EL2      (SPSR_MASK_ALL | SPSR_EL2h)
 
 #endif
