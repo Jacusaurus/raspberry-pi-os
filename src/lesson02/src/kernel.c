@@ -20,6 +20,7 @@ void kernel_main(void)
 	uart_init();
 	print_el();
 
+	//Enter infinite loop so the terminal/program doesn't end
 	while (1) {
 		uart_send(uart_recv());
 	}
