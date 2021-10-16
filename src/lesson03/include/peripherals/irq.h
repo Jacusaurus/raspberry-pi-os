@@ -19,4 +19,7 @@
 #define SYSTEM_TIMER_IRQ_2	(1 << 2)
 #define SYSTEM_TIMER_IRQ_3	(1 << 3)
 
+#define CORE0_IRQ_SOURCE	(TIMER_BASE+0x60)
+#define LOCAL_TIMER_INT		(1 << 11)	// page 16 of https://datasheets.raspberrypi.com/bcm2836/bcm2836-peripherals.pdf 
+
 #endif  /*_P_IRQ_H */

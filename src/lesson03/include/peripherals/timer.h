@@ -16,4 +16,8 @@
 #define TIMER_CS_M2	(1 << 2)
 #define TIMER_CS_M3	(1 << 3)
 
+// addresses from https://datasheets.raspberrypi.com/bcm2836/bcm2836-peripherals.pdf
+#define TIMER_CTRL	(TIMER_BASE+0x34)
+#define TIMER_FLAG	(TIMER_BASE+0x38)
+
 #endif  /*_P_TIMER_H */

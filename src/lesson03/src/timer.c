@@ -7,15 +7,12 @@ unsigned int curVal = 0;
 
 void timer_init ( void )
 {
-	curVal = get32(TIMER_CLO);
-	curVal += interval;
-	put32(TIMER_C1, curVal);
+	// sets value of TIMER_CTRL, enables timer and interrupt
+	put32(TIMER_CTRL, ((1 << 28) | interval));
 }
 
 void handle_timer_irq( void ) 
 {
-	curVal += interval;
-	put32(TIMER_C1, curVal);
-	put32(TIMER_CS, TIMER_CS_M1);
-	printf("Timer interrupt received\n\r");
+	printf("Local timer interrupt received\n\r");
+	put32(TIMER_FLAG, (3 << 30));	// clears interrupt flag and reloads the timer
 }
