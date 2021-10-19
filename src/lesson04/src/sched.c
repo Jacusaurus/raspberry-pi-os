@@ -43,6 +43,9 @@ void _schedule(void)
 			}
 		}
 	}
+	printf("\r\n switch to task %d\r\n", next);
+	printf("Tasks State:\r\n");
+	print_tasks();
 	switch_to(task[next]);
 	preempt_enable();
 }
@@ -77,4 +80,14 @@ void timer_tick()
 	enable_irq();
 	_schedule();
 	disable_irq();
+}
+void print_tasks()
+{
+	struct task_struct *t = task[0];
+	for(int i=0; (i<NR_TASKS) && t; i++){
+		t=task[i];
+		if(t){
+			printf("   %d: sp: 0x%x\r\n", i, t->cpu_context.sp);
+		}
+	}
 }
