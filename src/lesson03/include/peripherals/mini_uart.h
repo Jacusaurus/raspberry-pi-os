@@ -16,4 +16,9 @@
 #define AUX_MU_STAT_REG (PBASE+0x00215064)
 #define AUX_MU_BAUD_REG (PBASE+0x00215068)
 
+//Page 9 of BC2837
+#define AUX_IRQ         (PBASE+0x00215000)
+//Page 12 of BC2837
+#define ENABLE_MU_REC_INT  (0xFD)
+
 #endif  /*_P_MINI_UART_H */

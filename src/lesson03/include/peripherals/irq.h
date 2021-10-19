@@ -19,4 +19,9 @@
 #define SYSTEM_TIMER_IRQ_2	(1 << 2)
 #define SYSTEM_TIMER_IRQ_3	(1 << 3)
 
+//Page 9 of BC2837 or something else????
+#define miniUART_IRQ (1 << 0)
+//Page 113 of ?????
+#define en_AUX_INT  (1 << 29)
+
 #endif  /*_P_IRQ_H */
