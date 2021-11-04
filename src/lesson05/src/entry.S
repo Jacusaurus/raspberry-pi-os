@@ -159,7 +159,9 @@ el0_sync:
 	mrs	x25, esr_el1				// read the syndrome register
 	lsr	x24, x25, #ESR_ELx_EC_SHIFT		// exception class
 	cmp	x24, #ESR_ELx_EC_SVC64			// SVC in 64-bit state
-	b.eq	el0_svc
+	b.eq	 el0_svc
+	cmp x24,	 #ESR_ELx_EC_SYS_INSTR		//trap msr based on current interrupt mask bits
+	b.eq 	 el0_sys_instr
 	handle_invalid_entry 0, SYNC_ERROR
 
 sc_nr	.req	x25					// number of system calls
@@ -183,6 +185,13 @@ ret_from_syscall:
 	bl	disable_irq				
 	str	x0, [sp, #S_X0]				// returned x0
 	kernel_exit 0
+
+el0_sys_instr:
+	bl show_trapped_sys_instr
+	ldr x22, [sp, #16 * 16]			//Skip trapping the msr
+	add x22, x22, #4
+	str x22, [sp, #16 * 16]
+	b ret_to_user
 
 .globl ret_from_fork
 ret_from_fork:

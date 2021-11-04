@@ -10,6 +10,10 @@
 void user_process1(char *array)
 {
 	char buf[2] = {0};
+	if(array[0] == '1')
+	{
+		get_current_int_mask_bits();
+	}
 	while (1){
 		for (int i = 0; i < 5; i++){
 			buf[0] = array[i];

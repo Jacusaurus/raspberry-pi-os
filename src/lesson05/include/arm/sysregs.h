@@ -45,5 +45,6 @@
 
 #define ESR_ELx_EC_SHIFT		26
 #define ESR_ELx_EC_SVC64		0x15
+#define ESR_ELx_EC_SYS_INSTR    0x18    //Reserved bit in the Exception Syndrome Register.
 
 #endif

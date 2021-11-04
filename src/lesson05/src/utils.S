@@ -19,3 +19,8 @@ delay:
 	subs x0, x0, #1
 	bne delay
 	ret
+
+.globl get_current_int_mask_bits
+get_current_int_mask_bits:
+	mrs x0, DAIF
+	ret
